@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ultra Pro Max Finder</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/material-icons/iconfont/material-icons.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-primary navcontainer" aria-label="Main">
+      <a href="#" class="nav-link" id="nav-add"
+        ><i class="material-icons">account_circle</i><span>Add Account</span></a
+      >
+      <a href="#" class="nav-link" id="nav-accounts"
+        ><i class="material-icons">manage_accounts</i><span>Accounts</span></a
+      >
+      <a href="#" class="nav-link" id="nav-proposals"
+        ><i class="material-icons">note</i><span>Proposals</span></a
+      >
+    </nav>
+    <div id="notice" role="status" aria-live="polite"></div>
+    <main id="mainBody" class="container"></main>
+
+    <template id="tpl-add">
+      <h1 class="h2">Add Account</h1>
+      <form id="loginForm" autocomplete="off">
+        <div class="mb-3">
+          <label for="username" class="form-label">LinkedIn username (e-mail or phone):</label>
+          <input type="text" id="username" class="form-control" required maxlength="100" />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password:</label>
+          <input type="password" id="password" class="form-control" required maxlength="512" />
+        </div>
+        <p class="form-text" id="passwordHint"></p>
+        <button type="submit" class="btn btn-primary">Add Account</button>
+      </form>
+    </template>
+
+    <template id="tpl-accounts">
+      <h1 class="h2">Accounts</h1>
+      <table class="table mt-4" aria-label="Accounts">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Action</th>
+            <th>Settings</th>
+          </tr>
+        </thead>
+        <tbody id="accountsBody"></tbody>
+      </table>
+      <h2 class="h3 mt-5" id="sheetHeading">Saved requests</h2>
+      <div class="table-responsive">
+        <table class="table table-striped" id="sheetTable" aria-labelledby="sheetHeading"></table>
+      </div>
+    </template>
+
+    <template id="tpl-proposals">
+      <section class="block">
+        <form id="proposalForm">
+          <h2 class="h3">Proposal category</h2>
+          <label for="templateTitle" class="form-label"
+            >Job category (the "Job Type" of a request, or "default"):</label
+          >
+          <input type="text" id="templateTitle" class="form-control" required maxlength="200" />
+          <h2 class="h3 mt-3">Proposal template</h2>
+          <label for="templateText" class="form-label"
+            >Reply to the request (use &lt;first_name&gt; for the client's first name):</label
+          >
+          <textarea
+            id="templateText"
+            class="form-control"
+            rows="12"
+            required
+            maxlength="20000"
+          ></textarea>
+          <button type="submit" class="btn btn-primary mt-3">Save Template</button>
+        </form>
+        <div class="mt-4">
+          <label for="savedTemplate" class="form-label">Saved templates:</label>
+          <select id="savedTemplate" class="form-select"></select>
+          <p id="savedTemplateText" class="preline mt-2"></p>
+          <button type="button" class="btn btn-primary" id="editTemplate">Edit</button>
+          <button type="button" class="btn btn-danger" id="deleteTemplate">Delete</button>
+        </div>
+      </section>
+
+      <section class="block">
+        <form id="sheetForm">
+          <h2 class="h3">Google Sheet</h2>
+          <label for="sheetUrl" class="form-label"
+            >Link of the Google Sheet the requests are written to:</label
+          >
+          <input
+            type="url"
+            id="sheetUrl"
+            class="form-control"
+            maxlength="500"
+            placeholder="https://docs.google.com/spreadsheets/d/..."
+          />
+          <button type="submit" class="btn btn-primary mt-3">Save Link</button>
+        </form>
+      </section>
+
+      <section class="block">
+        <form id="messageForm">
+          <h2 class="h3">Follow-up message</h2>
+          <label for="messageText" class="form-label"
+            >Message sent to the client after the proposal (leave empty to send none):</label
+          >
+          <textarea id="messageText" class="form-control" rows="8" maxlength="20000"></textarea>
+          <button type="submit" class="btn btn-primary mt-3">Save Message</button>
+        </form>
+        <h3 class="h5 mt-3">Saved message</h3>
+        <p id="savedMessage" class="preline"></p>
+        <button type="button" class="btn btn-primary" id="editMessage">Edit</button>
+        <button type="button" class="btn btn-danger" id="deleteMessage">Delete</button>
+      </section>
+    </template>
+
+    <script src="renderer.js" defer></script>
+  </body>
+</html>

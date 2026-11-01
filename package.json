@@ -1,37 +1,43 @@
 {
-  "name": "profinder",
+  "name": "ultra-pro-max-finder",
   "version": "1.0.0",
-  "description": "linkedin profinder",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
-  },
+  "description": "Desktop helper for LinkedIn ProFinder: collects new project requests into a Google Sheet and submits saved proposal and message templates.",
+  "private": true,
+  "type": "module",
+  "main": "src/main/index.js",
+  "license": "MIT",
+  "author": "pramod",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kneeraazon404/UltraProMaxFinder.git"
   },
-  "author": "pramod",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kneeraazon404/UltraProMaxFinder/issues"
+  "engines": {
+    "node": ">=24"
   },
-  "homepage": "https://github.com/kneeraazon404/UltraProMaxFinder#readme",
-  "devDependencies": {
-    "electron": "^26.1.0",
-    "electron-packager": "^17.1.2"
+  "scripts": {
+    "start": "electron .",
+    "test": "vitest run --coverage",
+    "test:e2e": "node tests/e2e/smoke.mjs",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "package": "electron-packager . ultra-pro-max-finder --out=dist --overwrite --ignore='^/(?!(?:package[.]json|src|node_modules|LICENSE)(?:/|$))'"
   },
   "dependencies": {
-    "date-fns": "^2.30.0",
-    "electron-dl": "^3.5.0",
-    "exceljs": "^4.3.0",
-    "google-auth-library": "^9.0.0",
-    "googleapis": "^126.0.1",
-    "node-cron": "^3.0.2",
-    "node-schedule": "^2.1.1",
-    "playwright": "^1.40.0",
-    "puppeteer": "^21.3.6",
-    "toad-scheduler": "^3.0.0",
-    "xlsx": "^0.18.5"
+    "@googleapis/sheets": "^18.1.2",
+    "bootstrap": "^5.3.8",
+    "google-auth-library": "^11.3.2",
+    "material-icons": "^1.13.14",
+    "playwright": "^1.64.1"
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "@eslint/js": "^10.0.1",
+    "@vitest/coverage-v8": "^5.0.5",
+    "electron": "^45.2.1",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
+    "prettier": "^3.9.10",
+    "vitest": "^5.0.5"
   }
 }

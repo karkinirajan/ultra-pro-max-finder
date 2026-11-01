@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Schedule</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <h1 class="h3 mb-1">Schedule</h1>
+      <p class="text-muted" id="who"></p>
+      <div id="error" class="alert alert-danger d-none" role="alert"></div>
+      <form id="scheduleForm">
+        <div class="mb-3">
+          <label for="timeInput" class="form-label">Start time:</label>
+          <input type="time" required class="form-control" id="timeInput" />
+        </div>
+        <div class="mb-3">
+          <label for="lower" class="form-label">Check for new requests every:</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="lower" min="1" max="1440" required />
+            <span class="input-group-text">to</span>
+            <input type="number" class="form-control" id="higher" min="1" max="1440" required />
+            <span class="input-group-text">minutes</span>
+          </div>
+          <div class="form-text">A new random time in this range is picked after every check.</div>
+        </div>
+        <div class="mb-3">
+          <label for="startDateInput" class="form-label">Start date:</label>
+          <input type="date" class="form-control" id="startDateInput" required />
+        </div>
+        <div class="mb-3">
+          <label for="endDateInput" class="form-label">End date (optional, included):</label>
+          <input type="date" class="form-control" id="endDateInput" />
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-danger" id="removeSchedule">Remove Schedule</button>
+      </form>
+    </div>
+    <script src="schedule.js" defer></script>
+  </body>
+</html>

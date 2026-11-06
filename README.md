@@ -12,7 +12,7 @@ A desktop app (Electron) for freelancers who answer **LinkedIn ProFinder** reque
 
 ## Quickstart
 
-Requires Node.js 24 (see `.nvmrc`).
+Requires Node.js 26 (see `.nvmrc`).
 
 ```bash
 npm ci

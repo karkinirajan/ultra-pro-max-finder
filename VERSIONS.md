@@ -4,7 +4,7 @@ Read from `package-lock.json` and the installed packages on 2026-11-01.
 
 | Component                     | Version                    | Was (resolved in the old lock file)                             | Where it is set      |
 | ----------------------------- | -------------------------- | --------------------------------------------------------------- | -------------------- |
-| Node.js                       | 24 (24.22.1 here)          | unpinned                                                        | `.nvmrc`, `engines`  |
+| Node.js                       | 26 (26.13.0 here)          | unpinned                                                        | `.nvmrc`, `engines`  |
 | Electron                      | 45.2.1                     | 26.2.4                                                          | `package.json` (dev) |
 | Playwright                    | 1.64.1                     | 1.40.0                                                          | `package.json`       |
 | @googleapis/sheets            | 18.1.2                     | `googleapis` 126.0.1 (the whole Google API collection)          |                      |
